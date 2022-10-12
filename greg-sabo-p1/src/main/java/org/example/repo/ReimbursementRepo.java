@@ -1,6 +1,6 @@
 package org.example.repo;
 
-import org.example.models.User;
+import org.example.models.Reimbursement;
 import org.example.utils.CRUDDaoInterface;
 import org.example.utils.ConnectionManager;
 
@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReimbursementRepo implements CRUDDaoInterface {
+public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
     Connection connection;
 
     public ReimbursementRepo(){
@@ -20,7 +20,7 @@ public class ReimbursementRepo implements CRUDDaoInterface {
     }
 
     @Override
-    public int create(Object o) {
+    public int create(Reimbursement reimbursement) {
         return 0;
     }
 
@@ -30,17 +30,19 @@ public class ReimbursementRepo implements CRUDDaoInterface {
     }
 
     @Override
-    public Object getById(int id) {
+    public Reimbursement getById(int id) {
         return null;
     }
 
     @Override
-    public Object update(Object o) {
+    public Reimbursement update(Reimbursement reimbursement) {
         return null;
     }
 
+
     @Override
-    public boolean delete(Object o) {
+    public boolean delete(Reimbursement reimbursement) {
         return false;
     }
+
 }

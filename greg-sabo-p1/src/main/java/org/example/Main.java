@@ -1,6 +1,7 @@
 package org.example;
 
 import io.javalin.Javalin;
+import org.example.controller.UserController;
 import org.example.controllers.UserController;
 import org.example.models.User;
 import org.example.repo.UserRepo;
@@ -19,11 +20,12 @@ public class Main {
         UserController userController = new UserController(userService);
 
 
-        ReimbursementService reimbursementService = new ReimbursementService();
-        ReimbursementController reimbursementController = new ReimbursementController(reimbursementService);
+//        ReimbursementService reimbursementService = new ReimbursementService();
+//        ReimbursementController reimbursementController = new ReimbursementController(reimbursementService);
 
         //employee can log in, create reimbursement request, view past reimbursements
         app.get("/user", userController.getAllUsers);
+//        app.post("login", userController.login);
         app.get("/user/{id}", userController.getUserById);
         app.post("/user", userController.createNewUser);
         app.put("/user", userController.updateUser);

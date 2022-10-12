@@ -12,6 +12,12 @@ public class User {
 
     }
 
+    //for logging in
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public User(int id, String firstName, String lastName, String email, int roleId) {
         this.id = id;
         this.firstName = firstName;
@@ -25,6 +31,14 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.roleId = roleId;
+    }
+
+    public User(int id, String first_name, String last_name, String email, String pass_word) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
     }
 
     public int getId() {
