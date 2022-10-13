@@ -6,20 +6,20 @@ public class Reimbursement{
     private String description;
 
     private int authorId;
-    private String status;
+    private int status;
 
     public Reimbursement(){
 
     }
 
-    public Reimbursement(int id, double amount, String description, String status) {
+    public Reimbursement(int id, double amount, String description, int status) {
         this.id = id;
         this.amount = amount;
         this.description = description;
         this.status = status;
     }
 
-    public Reimbursement(double amount, String description, String status) {
+    public Reimbursement(double amount, String description, int status) {
         this.amount = amount;
         this.description = description;
         this.status = status;
@@ -57,11 +57,11 @@ public class Reimbursement{
         this.authorId = authorId;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

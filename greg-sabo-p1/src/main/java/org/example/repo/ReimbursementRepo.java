@@ -31,7 +31,7 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
             pstmt.setDouble(1, reimbursement.getAmount());
             pstmt.setString(2, reimbursement.getDescription());
             pstmt.setInt(3,reimbursement.getAuthorId());
-            pstmt.setString(2, reimbursement.getStatus());
+            pstmt.setInt(4, reimbursement.getStatus());
 
             pstmt.executeUpdate();
 
@@ -67,7 +67,7 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
                 reimbursement.setAmount(rs.getDouble("amount"));
                 reimbursement.setDescription(rs.getString("description"));
                 reimbursement.setAuthorId(rs.getInt("author_id"));
-                reimbursement.setStatus(rs.getString("status"));
+                reimbursement.setStatus(rs.getInt("status"));
                 reimb.add(reimbursement);
             }
             return reimb;
@@ -97,7 +97,7 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
                 reimbursement.setAmount(rs.getDouble("amount"));
                 reimbursement.setDescription(rs.getString("description"));
                 reimbursement.setAuthorId(rs.getInt("author_id"));
-                reimbursement.setStatus(rs.getString("status"));
+                reimbursement.setStatus(rs.getInt("status"));
 
             }
 
@@ -117,7 +117,7 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
             String sql = "UPDATE reimbursement SET status = ? WHERE id = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            pstmt.setString(1, reimbursement.getStatus());
+            pstmt.setInt(1, reimbursement.getStatus());
             pstmt.setInt(2,reimbursement.getId());
 
             pstmt.executeUpdate();
@@ -125,7 +125,7 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
             ResultSet rs = pstmt.getGeneratedKeys();
 
             while (rs.next()){
-                reimbursement.setStatus(rs.getString("status"));
+                reimbursement.setStatus(rs.getInt("status"));
             }
 
             return reimbursement;

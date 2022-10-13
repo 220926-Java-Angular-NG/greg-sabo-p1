@@ -4,18 +4,15 @@ import io.javalin.Javalin;
 import org.example.controller.ReimbursementController;
 import org.example.controller.UserController;
 
-import org.example.models.User;
-import org.example.repo.UserRepo;
 import org.example.services.ReimbursementService;
 import org.example.services.UserService;
 
 import org.example.models.Reimbursement;
 import org.example.repo.ReimbursementRepo;
-//import org.example.services.ReimbursementService;
 
 public class Main {
     public static void main(String[] args) {
-        Javalin app = Javalin.create().start(8080);
+        Javalin app = Javalin.create().start(8081);
 
         UserService userService = new UserService();
         UserController userController = new UserController(userService);
@@ -26,7 +23,7 @@ public class Main {
 
         //user can log in, create reimbursement request, view past reimbursements
         app.get("/user", userController.getAllUsers);
-//        app.post("login", userController.login);
+        app.post("/login", userController.loginUser);
         app.get("/user/{id}", userController.getUserById);
         app.post("/user", userController.createNewUser);
         app.put("/user", userController.updateUser);
@@ -34,8 +31,9 @@ public class Main {
 
 
         //flashcard uris
-        app.get("/reimbursement", reimbursementController.createNewReimbursement);
+        app.get("/reimbursement", reimbursementController.getAllReimbursements);
         app.post("/reimbursement",reimbursementController.createNewReimbursement);
+        app.put("/reimbursement", reimbursementController.updateReimbursement);
 
     }
 }

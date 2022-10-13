@@ -32,12 +32,28 @@ public class UserController {
             context.json(user).status(200);
         } else {
             // something went wrong
-            context.result("User not created").status(400);
+            context.result("Need to enter a unique email/username. User not created.").status(400);
         }
 
     };
 
     //login--------------------------------------------------------------------------------
+    //login
+//    public User loginUser(User user){
+//        return userRepo.login(user);
+//    }
+    public Handler loginUser = context ->{
+        User user = context.bodyAsClass(User.class); //change the json from postman to on object
+        String email = String.valueOf(service.loginUser(user));
+
+        if(email != null){
+            context.result("You are now logged in").status(200);
+        } else {
+            // something went wrong
+            context.result("Unsuccessful Login").status(400);
+        }
+    };
+
 
     //readall
     public Handler getAllUsers = context -> {
