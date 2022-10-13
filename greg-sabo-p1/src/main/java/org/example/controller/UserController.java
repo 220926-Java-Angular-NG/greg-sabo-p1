@@ -37,10 +37,9 @@ public class UserController {
 
     };
 
+    //login--------------------------------------------------------------------------------
 
-    //read
-
-    //all
+    //readall
     public Handler getAllUsers = context -> {
 
         context.json(service.getAllUsers());
@@ -48,12 +47,10 @@ public class UserController {
 
 
 
-    //by id
+    //read by id
 
     public Handler getUserById = context -> {
         String param = context.pathParam("id");
-
-        // we are going to wrap this logic in a try catch
 
         try {
             //this is the id that we are getting from our url

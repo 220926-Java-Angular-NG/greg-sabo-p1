@@ -33,7 +33,7 @@ public class User {
         this.roleId = roleId;
     }
 
-    public User(int id, String first_name, String last_name, String email, String pass_word) {
+    public User(int id, String firstName, String lastName, String email, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
