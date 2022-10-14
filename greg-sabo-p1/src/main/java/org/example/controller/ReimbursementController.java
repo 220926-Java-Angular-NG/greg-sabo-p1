@@ -31,7 +31,7 @@ public class ReimbursementController {
         if(id>0){
             context.result("Your reimbursement was created!").status(202);
         } else {
-            context.result("Your reimbursement could not be created").status(404);
+            context.result("You need a description and/or to specify an amount for your reimbursement request. Your reimbursement could not be created.").status(404);
         }
 
 
@@ -51,13 +51,13 @@ public class ReimbursementController {
     };
 
     //read by id
-    public Handler getReimbursementById = context -> {
+    public Handler getReimbursementByStatus = context -> {
 
         String param = context.pathParam("id");
 
         try {
             int id = Integer.valueOf(param);
-            Reimbursement reimb = service.getReimbursementById(id);
+            List<Reimbursement> reimb = service.getReimbursementById(id);
 
             if(reimb != null){
                 context.json(reimb).status(202);

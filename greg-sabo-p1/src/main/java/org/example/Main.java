@@ -32,6 +32,7 @@ public class Main {
 
         //flashcard uris
         app.get("/reimbursement", reimbursementController.getAllReimbursements);
+        app.get("/reimbursementByStatus/{id}", reimbursementController.getReimbursementByStatus);
         app.post("/reimbursement",reimbursementController.createNewReimbursement);
         app.put("/reimbursement", reimbursementController.updateReimbursement);
 

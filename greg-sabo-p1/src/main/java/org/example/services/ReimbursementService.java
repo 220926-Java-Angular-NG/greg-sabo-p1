@@ -31,7 +31,7 @@ public class ReimbursementService {
 
     //read by id
 
-    public Reimbursement getReimbursementById( int id){
+    public List<Reimbursement> getReimbursementById( int id){
         return reimbursementRepo.getById(id);
     }
 

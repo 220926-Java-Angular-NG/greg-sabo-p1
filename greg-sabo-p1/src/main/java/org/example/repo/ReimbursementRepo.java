@@ -80,25 +80,31 @@ public class ReimbursementRepo implements CRUDDaoInterface<Reimbursement> {
 
     }
 
-    @Override
-    public Reimbursement getById(int id) {
+    public List<Reimbursement> getById(int status) {
+        List<Reimbursement> reimbursement = new ArrayList<>();
         try {
 
-            String sql = "SELECT * FROM reimbursement WHERE id = ?";
+            String sql = "SELECT * FROM reimbursement WHERE status = ?";
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1,id);
+            pstmt.setInt(1,status);
 
             ResultSet rs = pstmt.executeQuery();
 
-            Reimbursement reimbursement = new Reimbursement();
+//            List<Reimbursement> reimbursement = new ArrayList<>();
 
             while(rs.next()){
-                reimbursement.setId(rs.getInt("id"));
-                reimbursement.setAmount(rs.getDouble("amount"));
-                reimbursement.setDescription(rs.getString("description"));
-                reimbursement.setAuthorId(rs.getInt("author_id"));
-                reimbursement.setStatus(rs.getInt("status"));
-
+//                reimbursement.setId(rs.getInt("id"));
+//                reimbursement.setAmount(rs.getDouble("amount"));
+//                reimbursement.setDescription(rs.getString("description"));
+//                reimbursement.setAuthorId(rs.getInt("author_id"));
+//                reimbursement.setStatus(rs.getInt("status"));
+                Reimbursement reimb = new Reimbursement();
+                reimb.setId(rs.getInt("id"));
+                reimb.setAmount(rs.getDouble("amount"));
+                reimb.setDescription(rs.getString("description"));
+                reimb.setAuthorId(rs.getInt("author_id"));
+                reimb.setStatus(rs.getInt("status"));
+                reimbursement.add(reimb);
             }
 
             return reimbursement;

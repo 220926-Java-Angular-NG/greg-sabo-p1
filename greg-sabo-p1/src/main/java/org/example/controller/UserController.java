@@ -38,10 +38,6 @@ public class UserController {
     };
 
     //login--------------------------------------------------------------------------------
-    //login
-//    public User loginUser(User user){
-//        return userRepo.login(user);
-//    }
     public Handler loginUser = context ->{
         User user = context.bodyAsClass(User.class); //change the json from postman to on object
         String email = String.valueOf(service.loginUser(user));
@@ -52,6 +48,11 @@ public class UserController {
             // something went wrong
             context.result("Unsuccessful Login").status(400);
         }
+//        User username = context.formParam("username");
+//        String password = context.formParam("password");
+
+//        User loginResult = null;
+//        loginResult = service.loginUser(username);
     };
 
 
